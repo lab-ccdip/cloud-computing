@@ -118,3 +118,7 @@ EXPOSE 80
 docker build -t login-page-app .
 
 docker run -d -p 8080:80 login-page-app
+
+docker stop login-page-app
+
+docker rm login-page-app
