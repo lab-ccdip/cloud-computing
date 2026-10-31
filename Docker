@@ -1,0 +1,120 @@
+index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login Page</h2>
+        <form id="loginForm">
+            <input type="text" id="username"
+                   placeholder="Enter Username" required>
+            <input type="password" id="password"
+                   placeholder="Enter Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p id="message"></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+style.css
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e6f2ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.login-container {
+    background-color: white;
+    padding: 30px;
+    width: 300px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #aaa;
+}
+h2 {
+    color: #007bff;
+}
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+button {
+    width: 97%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0056b3;
+}
+#message {
+    color: green;
+    margin-top: 15px;
+}
+
+
+
+
+
+script.js
+
+document.getElementById("loginForm")
+    .addEventListener("submit", function(event) {
+        event.preventDefault();
+        const username =
+            document.getElementById("username").value;
+        const password =
+            document.getElementById("password").value;
+        if (username === "admin" && password === "12345") {
+            document.getElementById("message").textContent =
+                "Login Successful!";
+        } else {
+            document.getElementById("message").textContent =
+                "Invalid Username or Password!";
+            document.getElementById("message").style.color = "red";
+        }
+    });
+
+
+
+
+
+Dockerfile
+
+FROM nginx:alpine
+
+COPY index.html /usr/share/nginx/html/index.html
+COPY style.css /usr/share/nginx/html/style.css
+COPY script.js /usr/share/nginx/html/script.js
+
+EXPOSE 80
+
+
+
+docker build -t login-page-app .
+
+docker run -d -p 8080:80 login-page-app
