@@ -1,0 +1,6 @@
+mkdir cloud
+cd cloud
+touch cloud.txt
+rm cloud.txt
+cd ..
+rmdir cloud
