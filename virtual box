@@ -1,6 +1,6 @@
-mkdir cloud
-cd cloud
-touch cloud.txt
-rm cloud.txt
+mkdir folder_name
+cd folder_name
+touch file_name.txt
+rm file_name.txt
 cd ..
-rmdir cloud
+rmdir folder_name
