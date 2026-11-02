@@ -68,10 +68,10 @@ button {
 script.js
 
 function login() {
-    var email = document.getElementById("email").value;
+    var email = document.getElementById("username").value;
     var password = document.getElementById("password").value;
 
-    if (email == "admin@gmail.com" && password == "12345")
+    if (username == "admin" && password == "12345")
         document.getElementById("message").innerHTML = "Login Successful!";
     else
         document.getElementById("message").innerHTML = "Invalid Login!";
